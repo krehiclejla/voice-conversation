@@ -1,0 +1,56 @@
+{
+  "id": "voice-conversation",
+  "name": "Voice Conversation",
+  "version": "0.3.0",
+  "description": "Push-to-talk conversation with your agent. Hold to talk; answers are read aloud with the voice you pick in the Voice app.",
+  "entry": "index.jsx",
+  "icon": "icon.png",
+  "offline_capable": false,
+  "permissions": {},
+  "service": {
+    "id": "voice-conversation-speech",
+    "entry": "service.py",
+    "access": "self"
+  },
+  "python": {
+    "lock": "requirements.lock"
+  },
+  "capabilities": {
+    "media.microphone.capture": {
+      "version": 1,
+      "reason": "Hear what you say while you hold the talk button.",
+      "limits": {
+        "max_duration_ms": 60000
+      }
+    },
+    "media.speech": {
+      "version": 1,
+      "reason": "Read your agent's answers aloud with the voice selected in the Voice app.",
+      "limits": {
+        "max_text_chars": 5000
+      }
+    }
+  },
+  "source_files": [
+    "service.py",
+    "requirements.lock",
+    "lib/voiceSpeech.js",
+    "lib/nameNormalizer.js",
+    "lib/nameMishearings.js",
+    "lib/placeNames.js",
+    "lib/voiceEngine.js",
+    "lib/voiceAnswer.js"
+  ],
+  "package_id": "615621c5-9913-4c32-a382-a1dacbc1e167",
+  "store": {
+    "tagline": "Talk with your agent, hands-free, and hear it answer",
+    "description": "Hold the button and speak; your Möbius agent answers out loud in the voice you picked in the Voice app.\n\n• Hold to talk, or tap to start and tap again to send (up to 60 seconds).\n• Accurate speech recognition that copes well with accents (NVIDIA Parakeet, runs on your own Möbius server; a ~104 MB model downloads once on first open).\n• Answers are read aloud sentence by sentence as they're written, with the voice kept loaded so replies start quickly.\n• Question cards are read aloud too, and you can answer them by voice.\n• Every conversation is an ordinary chat in your Recents, using your own models.\n\nNeeds the Voice app with a voice downloaded.",
+    "screenshots": [
+      {
+        "src": "static/store/talk.png",
+        "alt": "Voice Conversation: the conversation view with a large talk button at the bottom",
+        "label": "Hold to talk"
+      }
+    ]
+  }
+}
